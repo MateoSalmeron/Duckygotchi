@@ -7,6 +7,6 @@ https://docs.google.com/document/d/1IdD-TEzNNgKbVWxj-ap3YqmxOu09q3xR3rU_tB7xTZc/
 La idea es hacer un "juego"/app/web donde tengamos que cuidar de un pato, donde haya diferentes skins que se podran comprar con moneditas que se podrán ganar en un mini juego.
 Estás Skins se podrán intercambiar con otras personas.
 
-
+d
 Backend: Fast API En python.
 Frontend: NI ZORRA.
