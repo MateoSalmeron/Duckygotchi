@@ -1,4 +1,4 @@
-import user
+import User
 
 
 class UserService:
@@ -6,22 +6,17 @@ class UserService:
     def __init__(self):
         pass
 
-    def login (id, password):
-        newUser = user()
-        newUser.id = id
-        newUser.password = password
-        # call bd to check if already exist
+    def login (loginUser):
+        # call db to check if already exist
         # if don't exists return false
+        pass
 
     def logout():
         pass
 
-    def singup(id, password):
-        newUser = user()
-        newUser.id = id
-        newUser.password = password
-        # call bd to check if already exist
+    def singup(newUser):
+        # call db to check if already exist
         # if don't exist add to db
-        newUser.login(id, password)
+        # else return false
         pass
 
