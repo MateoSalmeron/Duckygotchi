@@ -10,7 +10,7 @@ class UserService:
         newUser = user()
         newUser.id = id
         newUser.password = password
-        # call api to check if already exist
+        # call bd to check if already exist
         # if don't exists return false
 
     def logout():
@@ -20,7 +20,7 @@ class UserService:
         newUser = user()
         newUser.id = id
         newUser.password = password
-        # call api to check if already exist
+        # call bd to check if already exist
         # if don't exist add to db
         newUser.login(id, password)
         pass
