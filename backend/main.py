@@ -40,11 +40,11 @@ def singup():
 def get_status():
     return "hello duck"
 
-@app.post("duck/create")
+@app.post("/duck/create")
 def create_duck():
     return "hello duck"
 
-@app.put("duck/skin")
+@app.put("/duck/skin")
 def change_skin():
     return "hello duck"
 
@@ -55,17 +55,17 @@ def change_skin():
 def get_consumable():
     return "hello duck"
 
-@app.get("market/skins")
+@app.get("/market/skins")
 def get_skins():
     return "hello duck"
 
 
-@app.post("market/consumable")
+@app.post("/market/consumable")
 def buy_consumable():
     return "hello duck"
 
 
-@app.post("market/skin")
+@app.post("/market/skin")
 def buy_skin():
     return "hello duck"
 
