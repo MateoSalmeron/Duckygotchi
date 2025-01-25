@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from cookies.session import SessionVerifications
 from duck.service import DuckService
 from user.service import UserService
+from skin.service import SkinService
 from user.User import User
 
 router = APIRouter(
