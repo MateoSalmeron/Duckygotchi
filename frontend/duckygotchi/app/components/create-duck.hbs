@@ -1,0 +1,10 @@
+<form {{on "submit" this.submit}}>
+    <fieldset>
+        <legend>Create new duck</legend>
+        <input type="text" name="duckName"><br>
+        <input type="submit" value="Create">
+        {{#if @error}}
+            <p class="error">{{@error}}</p>
+        {{/if}}
+    </fieldset>
+</form>
