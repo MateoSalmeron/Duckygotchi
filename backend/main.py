@@ -7,6 +7,12 @@ import socketio
 from fastapi_socketio import SocketManager
 from fastapi.responses import FileResponse, PlainTextResponse
 import os
+import json
+from api import router as apiRouter
+from sockets import sio_app
+
+if not os.path.isfile('db/duck_app.sqlite'):
+    import db.createDB
 
 app = FastAPI(
     description="This is a simple app to take care of a duck",
@@ -14,7 +20,6 @@ app = FastAPI(
     docs_url="/docs"
 )
 
-from sockets import sio_app
 app.mount('/', app=sio_app)
 # socket_manager = SocketManager(app=app)
 
@@ -36,10 +41,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-import json
-from api import router as apiRouter
 
 app.include_router(apiRouter)
 
@@ -70,6 +71,3 @@ if __name__ == '__main__':
 #     print("Client Disconnected: "+" "+str(sid
 # if __name__=="__main__":
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
-
-if not os.path.isfile('db/duck_app.sqlite'):
-    import db.createDB

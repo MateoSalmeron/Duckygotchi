@@ -1,5 +1,4 @@
-from db.repository import execute_query_with_params
-from db.repository import execute_read_query_with_params
+from db.repository import execute_query_with_params,execute_read_query_with_params
 from user.User import User
 class UserRepository:
 
