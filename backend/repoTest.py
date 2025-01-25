@@ -1,5 +1,6 @@
 from user.User import User
-from user.userRepository import UserRepository
+from user.repository import UserRepository
 
 user2 = User('r','s')
-UserRepository.save(user2)
+repo = UserRepository()
+repo.save(user2)
