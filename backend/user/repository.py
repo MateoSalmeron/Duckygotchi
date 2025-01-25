@@ -1,6 +1,6 @@
 from db.repository import execute_query_with_params
 from db.repository import execute_read_query_with_params
-
+from user.User import User
 class UserRepository:
 
     def __init__(self):
@@ -9,7 +9,7 @@ class UserRepository:
     def save(self,user):
         print("save user")
         insert_user(user)
-    
+
     def find(self,name):
         print("find user")
         return find_user_by_name(name)
@@ -24,4 +24,14 @@ def find_user_by_name(name):
     # insert table statement
     find_user_query = 'SELECT * FROM users WHERE users.name = ?'
     query_params = (name)
-    return execute_read_query_with_params(find_user_query,query_params)
+    return _mapper(execute_read_query_with_params(find_user_query,query_params))[0]
+
+
+
+def _mapper( results):
+    users = []
+    print(results)
+    for id, name, password in results:
+        users.append(User(name, password))
+    return users
+

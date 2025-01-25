@@ -1,4 +1,4 @@
-from db.repository import execute_query_with_params, execute_query_with_params
+from db.repository import execute_query_with_params, execute_read_query_with_params
 
 class DuckRepository:
 
@@ -11,8 +11,7 @@ class DuckRepository:
 
     def getDuckById(self, duck_id):
         query = "SELECT * from ducks where id = '{duck_id}'"
-        result = execute_query(query)
-        return result
+        return execute_read_query_with_params(query)
 
 def insert_duck(duck):
     # insert table statement
