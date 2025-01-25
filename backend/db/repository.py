@@ -21,13 +21,11 @@ def execute_query(query):
         cursor.execute(query)
         connection.commit()
         print("Query executed successfully")
-        cursor.close()
-        connection.close()
-        return result
     except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
         cursor.close()
         connection.close()
-        print(f"The error '{e}' occurred")
 
 def execute_query_with_params(query, object):
     connection = create_connection()
@@ -36,10 +34,8 @@ def execute_query_with_params(query, object):
         cursor.execute(query, object)
         connection.commit()
         print("Query executed successfully")
-        cursor.close()
-        connection.close()
     except Error as e:
         print(f"The error '{e}' occurred")
+    finally:
         cursor.close()
         connection.close()
-
