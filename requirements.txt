@@ -6,5 +6,6 @@ python-firebase==1.2
 pydantic-core==2.14.1
 pydantic==2.5.0
 uvicorn==0.24.0.post1
+fastapi-socketio==0.0.10
 
 
