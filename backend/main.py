@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/", StaticFiles(directory="../static"), name="static")
+app.mount("/", StaticFiles(directory="../static", html=True), name="static")
 
 import json
 

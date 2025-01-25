@@ -18,8 +18,6 @@ COPY . .
 
 COPY --from=frontend ./frontend/duckygotchi/dist   ./static
 
-RUN ls -la ./static
-
 #
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
