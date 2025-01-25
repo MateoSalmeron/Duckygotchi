@@ -1,7 +1,4 @@
 
-
-
-
 class Duck:
 
     def __init__(self, name, user_id):
