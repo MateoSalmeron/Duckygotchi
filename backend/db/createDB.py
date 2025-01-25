@@ -3,26 +3,7 @@ import os
 from sqlite3 import Error
 
 sqlite_path = 'db/duck_app.sqlite'
-
-def create_connection():
-    connection = None
-    try:
-        connection = sqlite3.connect(sqlite_path)
-        print("Connection to SQLite DB successful")
-    except Error as e:
-        print(f"The error '{e}' occurred")
-    return connection
-
-def execute_query(query):
-    connection = create_connection()
-    cursor = connection.cursor()
-    try:
-        cursor.execute(query)
-        connection.commit()
-        print("Query executed successfully")
-    except Error as e:
-        print(f"The error '{e}' occurred")
-
+from db.repository import execute_query
 
 create_users_table = """
 CREATE TABLE IF NOT EXISTS users (
@@ -61,9 +42,14 @@ CREATE TABLE IF NOT EXISTS duck_skin (
   FOREIGN KEY (duck_id) REFERENCES ducks (id) FOREIGN KEY (skin_id) REFERENCES skins (id)
 );
 """
+
+create_basic_skin= """INSERT INTO skins( name, price, path) VALUES('basic_name','basic_duck',1, "")"""
+
 os.remove(sqlite_path)
 
 execute_query(create_users_table)
 execute_query(create_skins_table)
 execute_query(create_ducks_table)
 execute_query(create_duck_skin_table)
+execute_query(create_basic_skin)
+
