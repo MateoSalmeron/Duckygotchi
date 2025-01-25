@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS duck_skin (
 
 create_basic_skin= """INSERT INTO skins( name, cost, path) VALUES('basic_duck_name',1,'/path')"""
 
-if os.path.isfile('duck_app.sqlite'):
+if os.path.isfile(sqlite_path):
   os.remove(sqlite_path)
   print('Recreated DB')
 
