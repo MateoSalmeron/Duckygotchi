@@ -1,9 +1,14 @@
 from fastapi import APIRouter
+from cookies.session import SessionVerifications
 
 router = APIRouter(
     prefix="/api",
     responses={404: {"description": "Not found"}},
 )
+
+# cookies
+verificator = SessionVerifications()
+router.include_router(verificator.router)
 
 #USER
 @router.post("/login")

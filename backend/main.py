@@ -35,13 +35,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# cookies
-from cookies.session import SessionVerifications
-
-verificator = SessionVerifications()
-app.include_router(verificator.router)
-
-
 
 import json
 from duck.service import DuckService as DuckService
