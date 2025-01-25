@@ -70,7 +70,7 @@ def get_status():
 @app.post("/duck/create/{duck_name}")
 def create_duck(duck_name):
     print(f"create Duck init: {duck_name}")
-    duck_service.create_duck(duck_name, None)
+    return duck_service.create_duck(duck_name, None)
 
 @app.put("/duck/skin")
 def change_skin():

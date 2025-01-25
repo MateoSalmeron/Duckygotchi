@@ -6,4 +6,4 @@ class DuckRepository:
         pass
 
     def save(self, duck):
-        print("save duck")
+        print(f"save duck   {duck}")

@@ -1,8 +1,8 @@
 
-class skin:
+class Skin:
 
-    def __init__(self):
-        self.id = None
+    def __init__(self, id):
+        self.id = id
         self.name = None
         self.price = None
         self.path = None
