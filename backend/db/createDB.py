@@ -1,9 +1,9 @@
-import sqlite3
 import os
+import sqlite3
 from sqlite3 import Error
+from repository import execute_query
 
 sqlite_path = 'db/duck_app.sqlite'
-from db.repository import execute_query
 
 create_users_table = """
 CREATE TABLE IF NOT EXISTS users (
@@ -26,8 +26,8 @@ create_ducks_table = """
 CREATE TABLE IF NOT EXISTS ducks (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
-  last_clean_time TEXT NOT NULL,
-  last_feed_time TEXT NOT NULL,
+  last_clean_time TIMESTAMP,
+  last_feed_time TIMESTAMP,
   coins INTEGER NOT NULL,
   skin_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS duck_skin (
 );
 """
 
-create_basic_skin= """INSERT INTO skins( name, price, path) VALUES('basic_name','basic_duck',1, "")"""
+create_basic_skin= """INSERT INTO skins( name, cost, path) VALUES('basic_duck_name',1,'/path')"""
 
 os.remove(sqlite_path)
 
