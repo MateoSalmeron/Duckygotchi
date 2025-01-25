@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from sqlite3 import Error
-from repository import execute_query
+from db.repository import execute_query
 
 sqlite_path = 'db/duck_app.sqlite'
 
@@ -47,7 +47,9 @@ CREATE TABLE IF NOT EXISTS duck_skin (
 
 create_basic_skin= """INSERT INTO skins( name, cost, path) VALUES('basic_duck_name',1,'/path')"""
 
-os.remove(sqlite_path)
+if os.path.isfile('duck_app.sqlite'):
+  os.remove(sqlite_path)
+  print('Recreated DB')
 
 execute_query(create_users_table)
 execute_query(create_skins_table)

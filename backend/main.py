@@ -71,3 +71,5 @@ if __name__ == '__main__':
 # if __name__=="__main__":
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
 
+if not os.path.isfile('db/duck_app.sqlite'):
+    import db.createDB
