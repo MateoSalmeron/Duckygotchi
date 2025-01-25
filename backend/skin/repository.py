@@ -14,16 +14,20 @@ class SkinRepository:
         print(result)
         return result
 
-
     def get_all_skins(self):
         query = "SELECT * FROM skins"
         result = execute_read_query_with_params(query)
         print("RESULTADO:")
         print(result)
-        return result
+        return self._mapper(result)
 
     def get_skin_by_id(self, id):
         query = f"SELECT * from skins WHERE id ={id}"
-        result = execute_read_query_with_params(query)
+        return self._mapper(execute_read_query_with_params(query))[0]
 
-
+    def _mapper(self, results):
+        skins = []
+        print(results)
+        for id, name, price, path in results:
+            skins.append(Skin(id, name, price, path))
+        return skins

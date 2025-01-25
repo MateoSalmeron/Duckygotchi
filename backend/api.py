@@ -29,8 +29,10 @@ def singup(request):
     #return UserService.singup(User(name, password))
 
 #DUCK
-@router.get("/duck/status/{id}")
-def get_status(id):
+@router.get("/duck/status")
+def get_status():
+    #Get usuario y duck Id con las sesiones
+    id = None;
     duck = duck_service.get_duck_status(id)
     skin = skin_service.get_skin_by_id(duck.skin)
     return  {duck: duck.__dict__,

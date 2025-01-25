@@ -1,9 +1,9 @@
 
 class Skin:
 
-    def __init__(self, id):
+    def __init__(self, id, name, price, path):
         self.id = id
-        self.name = None
-        self.price = None
-        self.path = None
+        self.name = name
+        self.price = prince
+        self.path = path
 
