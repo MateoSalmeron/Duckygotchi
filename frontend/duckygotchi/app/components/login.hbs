@@ -1,0 +1,9 @@
+<form {{on "submit" this.submit}}>
+    <fieldset>
+        <legend>Log in</legend>
+        <input type="text" name="user"><br>
+        <input type="password" name="pass"><br>
+        <LinkTo @route="signup" class="button">No account yet? Sign up</LinkTo><br>
+        <input type="submit" value="Log in">
+    </fieldset>
+</form>
