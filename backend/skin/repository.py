@@ -8,22 +8,22 @@ class SkinRepository:
 
     def get_basic_skin(self):
         print("return basic skin")
-        query = f"SELECT * FROM skins WHERE id = 'basic_id'"
-        result = execute_read_query_with_params(query)
+        query = f"SELECT * FROM skins WHERE name = 'basic_duck_name'"
+        result = execute_read_query_with_params(query, ())
         print("RESULTADO:")
         print(result)
         return result
 
     def get_all_skins(self):
         query = "SELECT * FROM skins"
-        result = execute_read_query_with_params(query)
+        result = execute_read_query_with_params(query, ())
         print("RESULTADO:")
         print(result)
         return self._mapper(result)
 
     def get_skin_by_id(self, id):
         query = f"SELECT * from skins WHERE id ={id}"
-        return self._mapper(execute_read_query_with_params(query))[0]
+        return self._mapper(execute_read_query_with_params(query, ()))[0]
 
     def _mapper(self, results):
         skins = []

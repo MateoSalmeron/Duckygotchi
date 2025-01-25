@@ -8,6 +8,7 @@ class SkinService:
 
     def get_basic_skin_id(self):
         skin = self.skin_repository.get_basic_skin()
+        print("devuelve Skin")
         print(skin)
         return skin
 

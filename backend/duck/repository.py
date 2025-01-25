@@ -16,9 +16,14 @@ class DuckRepository:
 
     def _mapper(self, results):
         ducks = []
-        for id, name, last_clean_time, last_feed_time, user_id, skin, coins, skins_available in results:
-            ducks.append(Duck(name, last_clean_time, last_feed_time, user_id, skin, coins, skins_available, id))
+        for id, name, last_clean_time, last_feed_time, user_id, skin, coins, _ in results:
+            ducks.append(Duck(name, last_clean_time, last_feed_time, user_id, skin, coins, id))
         return ducks
+
+    def getDuckByUserId(self, user_id):
+        query = "SELECT * from ducks where user_id = '{user_id}'"
+        return self._mapper(execute_read_query_with_params(query, ()))[0]
+
 
 def insert_duck(duck):
     # insert table statement

@@ -29,7 +29,6 @@ def find_user_by_name(name):
         return False
 
 
-
 def _mapper( results):
     users = []
     print(results)
