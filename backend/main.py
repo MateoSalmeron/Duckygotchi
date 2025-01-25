@@ -14,15 +14,17 @@ app = FastAPI(
     docs_url="/docs"
 )
 
-socket_manager = SocketManager(app=app)
+from sockets import sio_app
+app.mount('/', app=sio_app)
+# socket_manager = SocketManager(app=app)
 
-# create a Socket.IO server
-sio=socketio.AsyncServer(cors_allowed_origins='*',async_mode='asgi')
-# sio = socketio.AsyncServer()
+# # create a Socket.IO server
+# sio=socketio.AsyncServer(cors_allowed_origins='*',async_mode='asgi')
+# # sio = socketio.AsyncServer()
 
-#wrap with ASGI application
-socket_app = socketio.ASGIApp(sio)
-app.mount("/ws", socket_app)
+# #wrap with ASGI application
+# socket_app = socketio.ASGIApp(sio)
+# app.mount("/ws", socket_app)
 
 
 origins = ["*"]
@@ -55,9 +57,9 @@ if __name__ == '__main__':
 
 #socket
 
-@sio.on('my custom event')
-def another_event(sid, data):
-    pass
+# @sio.on('my custom event')
+# def another_event(sid, data):
+#     pass
 
 # @sio.on("connect")
 # async def connect(sid, env):
