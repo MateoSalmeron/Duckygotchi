@@ -1,6 +1,7 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Depends, WebSocket
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 app = FastAPI(
@@ -19,6 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.mount("/", StaticFiles(directory="../static"), name="static")
 
 import json
 
