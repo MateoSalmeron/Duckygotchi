@@ -32,6 +32,6 @@ def _mapper( results):
     users = []
     print(results)
     for id, name, password in results:
-        users.append(User(name, password))
+        users.append(User(name, password, id))
     return users
 
