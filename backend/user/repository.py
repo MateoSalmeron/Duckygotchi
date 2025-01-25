@@ -5,7 +5,7 @@ class UserRepository:
     def __init__(self):
         pass
 
-    def save(user):
+    def save(self,user):
         print("save user")
         insert_user(user)
 
