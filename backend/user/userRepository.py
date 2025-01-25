@@ -1,4 +1,4 @@
-from db.repository import add_object
+from db.repository import execute_query_with_params
 
 class UserRepository:
 
@@ -13,4 +13,4 @@ def insert_user(user):
     # insert table statement
     insert_user_query = 'INSERT INTO users(name,password) VALUES(?,?)'
     query_params = (user.name,user.password)
-    add_object(insert_user_query,query_params)
+    execute_query_with_params(insert_user_query,query_params)

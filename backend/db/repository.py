@@ -22,7 +22,7 @@ def execute_query(query):
     except Error as e:
         print(f"The error '{e}' occurred")
         
-def add_object(query, object):
+def execute_query_with_params(query, object):
     connection = create_connection()
     cursor = connection.cursor()
     try:
@@ -32,8 +32,3 @@ def add_object(query, object):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-def insert_user(user):
-    # insert table statement
-    inser_user_query = 'INSERT INTO users(name,password) VALUES(?,?)'
-    user_for_query = (user.name,user.password)
-    add_object(inser_user_query,user_for_query)
