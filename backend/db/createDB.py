@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS ducks (
   coins INTEGER NOT NULL,
   skin_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
-  FOREIGN KEY (skin_id) REFERENCES skins (id) FOREIGN KEY (user_id) REFERENCES users (id)
+  FOREIGN KEY (skin_id) REFERENCES skins (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 """
 
@@ -39,7 +40,8 @@ create_duck_skin_table = """
 CREATE TABLE IF NOT EXISTS duck_skin (
   duck_id INTEGER NOT NULL,
   skin_id INTEGER NOT NULL,
-  FOREIGN KEY (duck_id) REFERENCES ducks (id) FOREIGN KEY (skin_id) REFERENCES skins (id)
+  FOREIGN KEY (duck_id) REFERENCES ducks (id),
+  FOREIGN KEY (skin_id) REFERENCES skins (id)
 );
 """
 

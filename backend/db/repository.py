@@ -9,6 +9,7 @@ def create_connection():
         connection = sqlite3.connect(sqlite_path,detect_types=sqlite3.PARSE_DECLTYPES |
                              sqlite3.PARSE_COLNAMES)
         print("Connection to SQLite DB successful")
+        connection.execute('PRAGMA foreign_keys = ON')
     except Error as e:
         print(f"The error '{e}' occurred")
     return connection
