@@ -39,3 +39,18 @@ def execute_query_with_params(query, object):
     finally:
         cursor.close()
         connection.close()
+
+def execute_read_query_with_params(query, object):
+    connection = create_connection()
+    result = None
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query, object)
+        result = cursor.fetchall()
+        print("Query executed successfully")
+    except Error as e:
+        print(f"The error '{e}' occurred")
+    finally:
+        cursor.close()
+        connection.close()
+    return result

@@ -6,6 +6,9 @@ from duck.repository import DuckRepository
 user2 = User('r','s')
 userRepo = UserRepository()
 userRepo.save(user2)
+test = userRepo.find('r')
+print('find user:')
+print(test)
 
 duck =  Duck('patoNombre',1,1)
 duckRepo = DuckRepository()
