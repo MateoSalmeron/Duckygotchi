@@ -1,9 +1,9 @@
 
 
-class DuckerRepository:
+class DuckRepository:
 
     def __init__(self):
         pass
 
     def save(self, duck):
-        pass
+        print("save duck")
