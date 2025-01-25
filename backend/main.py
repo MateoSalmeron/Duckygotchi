@@ -20,7 +20,7 @@ app = FastAPI(
     docs_url="/docs"
 )
 
-app.mount('/', app=sio_app)
+app.mount('/ws/', app=sio_app)
 # socket_manager = SocketManager(app=app)
 
 # # create a Socket.IO server
