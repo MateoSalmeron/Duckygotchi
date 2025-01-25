@@ -13,7 +13,7 @@ router = APIRouter(
 verificator = SessionVerifications()
 router.include_router(verificator.router)
 duck_service = DuckService()
-
+skin_service = SkinService()
 #USER
 @router.post("/login{name}{password}")
 def login(name: str, password: str):
@@ -28,9 +28,12 @@ def singup(name: str, password: str):
     return UserService.singup(User(name, password))
 
 #DUCK
-@router.get("/duck/status")
-def get_status():
-    return "hello duck"
+@router.get("/duck/status/{id}")
+def get_status(id):
+    duck = duck_service.get_duck_status(id)
+    skin = skin_service.get_skin_by_id(duck.skin)
+    return  {duck: duck.__dict__,
+             skin: skin.path}
 
 @router.post("/duck/create/{duck_name}")
 def create_duck(duck_name):

@@ -12,3 +12,8 @@ class DuckService:
         duck = Duck(name, basic_skin_id, user_id)
         self.duck_repository.save(duck)
         return duck
+
+
+    def get_duck_status(self, duck_id):
+        return self.duck_repository.getDuckById(duck_id)
+

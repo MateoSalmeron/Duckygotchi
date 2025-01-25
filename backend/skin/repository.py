@@ -13,3 +13,15 @@ class SkinRepository:
         print("RESULTADO:")
         print(result)
         return result
+
+
+    def get_all_skins(self):
+        query = "SELECT * FROM skins"
+        result = execute_query(query)
+        print("RESULTADO:")
+        print(result)
+        return result
+
+    def get_skin_by_id(self, id):
+        query = f"SELECT * from skins WHERE id ={id}"
+        result = execute_query(query)

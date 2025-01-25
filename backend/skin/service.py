@@ -11,3 +11,7 @@ class SkinService:
         skin = self.skin_repository.get_basic_skin()
         print(skin)
         return skin
+
+    def get_skin_by_id(self, id):
+        return self.skin_repository.get_skin_by_id(id)
+
