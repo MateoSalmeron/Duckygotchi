@@ -11,26 +11,30 @@ def create_connection():
         print("Connection to SQLite DB successful")
         connection.execute('PRAGMA foreign_keys = ON')
     except Error as e:
-        print(f"The error '{e}' occurred")
+        print(f"Error while connecting to DB '{e}'")
     return connection
 
 def execute_query(query):
     connection = create_connection()
-    cursor = connection.cursor()
     try:
+        cursor = connection.cursor()
         cursor.execute(query)
         connection.commit()
         print("Query executed successfully")
+        cursor.close()
+        connection.close()
     except Error as e:
         print(f"The error '{e}' occurred")
         
 def execute_query_with_params(query, object):
     connection = create_connection()
-    cursor = connection.cursor()
     try:
+        cursor = connection.cursor()
         cursor.execute(query, object)
         connection.commit()
         print("Query executed successfully")
+        cursor.close()
+        connection.close()
     except Error as e:
         print(f"The error '{e}' occurred")
 
