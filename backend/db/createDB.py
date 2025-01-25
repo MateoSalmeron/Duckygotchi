@@ -2,7 +2,7 @@ import sqlite3
 import os
 from sqlite3 import Error
 
-sqlite_path = "duck_app.sqlite"
+sqlite_path = 'db/duck_app.sqlite'
 
 def create_connection():
     connection = None
@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS duck_skin (
   FOREIGN KEY (duck_id) REFERENCES ducks (id) FOREIGN KEY (skin_id) REFERENCES skins (id)
 );
 """
+os.remove(sqlite_path)
 
 execute_query(create_users_table)
 execute_query(create_skins_table)

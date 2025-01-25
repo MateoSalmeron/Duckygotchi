@@ -1,6 +1,5 @@
 from user.User import User
-import db.repository as repo
+from user.userRepository import UserRepository
 
-user = User('a','a')
-print(user)
-repo.insert_user(user)
+user2 = User('r','s')
+UserRepository.save(user2)
