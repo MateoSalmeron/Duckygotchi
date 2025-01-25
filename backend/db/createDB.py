@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS duck_skin (
 """
 
 create_basic_skin= """INSERT INTO skins( name, cost, path) VALUES('basic_duck_name',1,'/path')"""
+create_basic_user= """INSERT INTO users(name, password) VALUES('a','a')"""
 
 if os.path.isfile(sqlite_path):
   os.remove(sqlite_path)
@@ -57,4 +58,5 @@ execute_query(create_skins_table)
 execute_query(create_ducks_table)
 execute_query(create_duck_skin_table)
 execute_query(create_basic_skin)
+execute_query(create_basic_user)
 
