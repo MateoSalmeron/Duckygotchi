@@ -7,7 +7,7 @@ import uvicorn
 app = FastAPI(
     description="This is a simple app to take care of a duck",
     title="Duckygotchy",
-    docs_url="/"
+    docs_url="/docs"
 )
 
 origins = ["*"]
