@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 from cookies.session import SessionVerifications
-from duck.service import DuckService as DuckService
+from duck.service import DuckService
+from user.service import UserService
+from user.User import User
 
 router = APIRouter(
     prefix="/api",
@@ -13,17 +15,17 @@ router.include_router(verificator.router)
 duck_service = DuckService()
 
 #USER
-@router.post("/login")
-def login():
-    return "hello duck"
+@router.post("/login{name}{password}")
+def login(name: str, password: str):
+    return UserService.login(User(name, password))
 
 @router.post("/logout")
 def logout():
     return "hello duck"
 
-@router.post("/singup")
-def singup():
-    return "hello duck"
+@router.post("/singup{name}{password}")
+def singup(name: str, password: str):
+    return UserService.singup(User(name, password))
 
 #DUCK
 @router.get("/duck/status")
@@ -33,7 +35,7 @@ def get_status():
 @router.post("/duck/create/{duck_name}")
 def create_duck(duck_name):
     print(f"create Duck init: {duck_name}")
-    return duck_service.create_duck(duck_name, None)
+    return DuckService.create_duck(duck_name, None)
 
 @router.put("/duck/skin")
 def change_skin():
