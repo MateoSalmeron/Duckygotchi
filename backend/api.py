@@ -16,17 +16,21 @@ router.include_router(verificator.router)
 duck_service = DuckService()
 skin_service = SkinService()
 #USER
-@router.post("/login{name}{password}")
-def login(name: str, password: str):
-    return UserService.login(User(name, password))
+@router.post("/login")
+def login(request):
+    print(request)
+    return False
+    # return UserService.login(User(name, password))
 
 @router.post("/logout")
 def logout():
     return "hello duck"
 
-@router.post("/singup{name}{password}")
-def singup(name: str, password: str):
-    return UserService.singup(User(name, password))
+@router.post("/singup")
+def singup(request):
+    print(request)
+    return False
+    #return UserService.singup(User(name, password))
 
 #DUCK
 @router.get("/duck/status/{id}")
