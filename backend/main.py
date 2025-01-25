@@ -34,9 +34,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/", StaticFiles(directory="../static", html=True), name="static")
 
 import json
+from duck.service import DuckService as DuckService
+
+
+duck_service = DuckService()
 
 #USER
 @app.post("/login")
@@ -56,14 +59,14 @@ def singup():
 def get_status():
     return "hello duck"
 
-@app.post("/duck/create")
-def create_duck():
-    return "hello duck"
+@app.post("/duck/create/{duck_name}")
+def create_duck(duck_name):
+    print(f"create Duck init: {duck_name}")
+    duck_service.create_duck(duck_name, None)
 
 @app.put("/duck/skin")
 def change_skin():
     return "hello duck"
-
 
 
 #Market
@@ -101,7 +104,6 @@ def another_event(sid, data):
     
 # @sio.on("disconnect")
 # async def disconnect(sid):
-#     print("Client Disconnected: "+" "+str(sid))
-    
+#     print("Client Disconnected: "+" "+str(sid
 # if __name__=="__main__":
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
