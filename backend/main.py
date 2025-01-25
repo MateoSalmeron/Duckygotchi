@@ -5,7 +5,8 @@ from fastapi.staticfiles import StaticFiles
 import uvicorn
 import socketio
 from fastapi_socketio import SocketManager
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, PlainTextResponse
+import os
 
 app = FastAPI(
     description="This is a simple app to take care of a duck",
@@ -47,7 +48,10 @@ app.include_router(apiRouter)
 
 @app.exception_handler(404)
 async def index(_,__):
-    return FileResponse('../static/index.html')
+    if os.path.isfile('../static/index.html'):
+        return FileResponse('../static/index.html')
+    else:
+        return PlainTextResponse('Not found')
 
 app.mount("/", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
 
