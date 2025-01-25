@@ -73,4 +73,4 @@ def another_event(sid, data):
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
 
 
-app.mount("*", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
+app.mount("/", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
