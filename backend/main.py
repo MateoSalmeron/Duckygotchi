@@ -109,9 +109,12 @@ def another_event(sid, data):
 # @sio.on("connect")
 # async def connect(sid, env):
 #     print("New Client Connected to This id :"+" "+str(sid))
-    
+
 # @sio.on("disconnect")
 # async def disconnect(sid):
 #     print("Client Disconnected: "+" "+str(sid
 # if __name__=="__main__":
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
+
+
+app.mount("/", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
