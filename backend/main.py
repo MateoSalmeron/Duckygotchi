@@ -37,11 +37,6 @@ app.add_middleware(
 
 
 import json
-from duck.service import DuckService as DuckService
-
-
-duck_service = DuckService()
-
 from api import router as apiRouter
 
 app.include_router(apiRouter)

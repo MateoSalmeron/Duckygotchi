@@ -8,4 +8,6 @@ class SkinService:
 
 
     def get_basic_skin_id(self):
-        return self.skin_repository.get_basic_skin().id
+        skin = self.skin_repository.get_basic_skin()
+        print(skin)
+        return skin

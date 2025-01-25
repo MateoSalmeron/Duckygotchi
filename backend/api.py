@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from cookies.session import SessionVerifications
+from duck.service import DuckService as DuckService
 
 router = APIRouter(
     prefix="/api",
@@ -9,6 +10,7 @@ router = APIRouter(
 # cookies
 verificator = SessionVerifications()
 router.include_router(verificator.router)
+duck_service = DuckService()
 
 #USER
 @router.post("/login")
