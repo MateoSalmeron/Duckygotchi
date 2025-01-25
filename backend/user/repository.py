@@ -23,7 +23,10 @@ def find_user_by_name(name):
     # insert table statement
     find_user_query = 'SELECT * FROM users WHERE users.name = ?'
     query_params = (name)
-    return _mapper(execute_read_query_with_params(find_user_query,query_params))[0]
+    try:
+        return _mapper(execute_read_query_with_params(find_user_query,query_params))[0]
+    except:
+        return False
 
 
 
