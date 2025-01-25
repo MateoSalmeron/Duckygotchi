@@ -5,8 +5,7 @@ from fastapi.staticfiles import StaticFiles
 import uvicorn
 import socketio
 from fastapi_socketio import SocketManager
-
-
+from fastapi.responses import FileResponse
 
 app = FastAPI(
     description="This is a simple app to take care of a duck",
@@ -22,7 +21,7 @@ sio=socketio.AsyncServer(cors_allowed_origins='*',async_mode='asgi')
 
 #wrap with ASGI application
 socket_app = socketio.ASGIApp(sio)
-app.mount("/", socket_app)
+app.mount("/ws", socket_app)
 
 
 origins = ["*"]
@@ -46,6 +45,12 @@ from api import router as apiRouter
 
 app.include_router(apiRouter)
 
+@app.exception_handler(404)
+async def index(_,__):
+    return FileResponse('../static/index.html')
+
+app.mount("/", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
+
 if __name__ == '__main__':
   uvicorn.run("main:app",reload=True)
 
@@ -65,5 +70,3 @@ def another_event(sid, data):
 # if __name__=="__main__":
 #     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
 
-
-app.mount("/", StaticFiles(directory="../static", html=True, check_dir=False), name="static")
