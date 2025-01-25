@@ -1,14 +1,28 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, Depends, WebSocket
+from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 import uvicorn
+import socketio
+from fastapi_socketio import SocketManager
+
 
 app = FastAPI(
     description="This is a simple app to take care of a duck",
     title="Duckygotchy",
     docs_url="/docs"
 )
+
+socket_manager = SocketManager(app=app)
+
+# create a Socket.IO server
+sio=socketio.AsyncServer(cors_allowed_origins='*',async_mode='asgi')
+# sio = socketio.AsyncServer()
+
+#wrap with ASGI application
+socket_app = socketio.ASGIApp(sio)
+app.mount("/", socket_app)
+
 
 origins = ["*"]
 
@@ -75,3 +89,19 @@ def buy_skin():
 if __name__ == '__main__':
   uvicorn.run("main:app",reload=True)
 
+#socket
+
+@sio.on('my custom event')
+def another_event(sid, data):
+    pass
+
+# @sio.on("connect")
+# async def connect(sid, env):
+#     print("New Client Connected to This id :"+" "+str(sid))
+    
+# @sio.on("disconnect")
+# async def disconnect(sid):
+#     print("Client Disconnected: "+" "+str(sid))
+    
+# if __name__=="__main__":
+#     uvicorn.run("Soket_io:app", host="0.0.0.0", port=8000, lifespan="on", reload=True)
