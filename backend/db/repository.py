@@ -18,7 +18,7 @@ def execute_query(query):
     connection = create_connection()
     try:
         cursor = connection.cursor()
-        result = cursor.execute(query)
+        cursor.execute(query)
         connection.commit()
         print("Query executed successfully")
         cursor.close()
