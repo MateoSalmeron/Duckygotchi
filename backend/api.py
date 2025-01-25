@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from cookies.session import SessionVerifications
 from duck.service import DuckService
 from user.service import UserService
 from skin.service import SkinService
@@ -10,9 +9,6 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-# cookies
-verificator = SessionVerifications()
-router.include_router(verificator.router)
 duck_service = DuckService()
 skin_service = SkinService()
 #USER
