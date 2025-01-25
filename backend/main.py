@@ -49,53 +49,9 @@ from duck.service import DuckService as DuckService
 
 duck_service = DuckService()
 
-#USER
-@app.post("/login")
-def login():
-    return "hello duck"
+from api import router as apiRouter
 
-@app.post("/logout")
-def logout():
-    return "hello duck"
-
-@app.post("/singup")
-def singup():
-    return "hello duck"
-
-#DUCK
-@app.get("/duck/status")
-def get_status():
-    return "hello duck"
-
-@app.post("/duck/create/{duck_name}")
-def create_duck(duck_name):
-    print(f"create Duck init: {duck_name}")
-    return duck_service.create_duck(duck_name, None)
-
-@app.put("/duck/skin")
-def change_skin():
-    return "hello duck"
-
-
-#Market
-@app.get("/market/consumable")
-def get_consumable():
-    return "hello duck"
-
-@app.get("/market/skins")
-def get_skins():
-    return "hello duck"
-
-
-@app.post("/market/consumable")
-def buy_consumable():
-    return "hello duck"
-
-
-@app.post("/market/skin")
-def buy_skin():
-    return "hello duck"
-
+app.include_router(apiRouter)
 
 if __name__ == '__main__':
   uvicorn.run("main:app",reload=True)
