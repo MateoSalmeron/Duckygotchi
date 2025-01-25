@@ -7,6 +7,7 @@ import socketio
 from fastapi_socketio import SocketManager
 
 
+
 app = FastAPI(
     description="This is a simple app to take care of a duck",
     title="Duckygotchy",
@@ -33,6 +34,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# cookies
+from cookies.session import SessionVerifications
+
+verificator = SessionVerifications()
+app.include_router(verificator.router)
+
 
 
 import json
