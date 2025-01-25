@@ -1,5 +1,5 @@
 from skin.skin import Skin
-
+from db.repository import execute_query
 
 class SkinRepository:
 
@@ -8,4 +8,8 @@ class SkinRepository:
 
     def get_basic_skin(self):
         print("return basic skin")
-        return Skin("skin_id")
+        query = f"SELECT * FROM skins WHERE id = 'basic_id'"
+        result = execute_query(query)
+        print("RESULTADO:")
+        print(result)
+        return result
