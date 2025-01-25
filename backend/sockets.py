@@ -26,11 +26,9 @@ async def chat(sid, message):
 async def disconnect(sid):
     print(f'{sid}: disconnected')
     
-@sio_server.on("connect")
-async def connect(sid, env):
-    print("New Client Connected to This id :"+" "+str(sid))
-    await sio_server.emit('join')
     
-@sio_server.on('join')
-async def handle_join(sid, *args, **kwargs):
-    await sio_server.emit('lobby', 'User joined')
+@sio_server.event
+async def hola(sid, message):
+    print(f'{sid}: {message}')
+    await sio_server.emit('chat', {'sid': sid, 'message': "hola desde el server"})
+    
