@@ -6,7 +6,8 @@ sqlite_path = "db/duck_app.sqlite"
 def create_connection():
     connection = None
     try:
-        connection = sqlite3.connect(sqlite_path)
+        connection = sqlite3.connect(sqlite_path,detect_types=sqlite3.PARSE_DECLTYPES |
+                             sqlite3.PARSE_COLNAMES)
         print("Connection to SQLite DB successful")
     except Error as e:
         print(f"The error '{e}' occurred")
