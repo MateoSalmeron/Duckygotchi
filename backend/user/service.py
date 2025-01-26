@@ -13,7 +13,7 @@ class UserService:
 
     def login (self, loginUser: User):
         # call db to check if already exist
-        user = UserRepository.find(loginUser.name)
+        user = UserRepository().find(loginUser.name)
         if not user:
             return False
         return self.__private_add_login(user)
@@ -22,7 +22,7 @@ class UserService:
         pass
 
     def singup(newUser: User):
-        user = UserRepository.find(newUser.name)
+        user = UserRepository().find(newUser.name)
 
 
         # call db to check if already exist
@@ -33,6 +33,7 @@ class UserService:
     def __private_add_login(self, login_user: User):
         self.loged_users[login_user.name] = login_user
         self.user_cookies[login_user.user_id] = Cookie(login_user)
+        return True
 
 
     def __private_check_cookie(self, front_user: User, front_cookie: str):
